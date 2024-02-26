@@ -1,5 +1,6 @@
 const User = require("../model/userModel");
 const bcrypt = require("bcrypt");
+const multer = require("multer");
 
 module.exports.register = async (req, res, next) => {
   try {
@@ -48,6 +49,35 @@ module.exports.login = async (req, res, next) => {
 
     return res.json({ status: true, user });
   } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.uploadpic = async (req, res, next) => {
+  try {
+    const fileName = req.file.filename;
+    const userId = req.body.userId;
+
+    console.log(req.body);
+
+    console.log(fileName);
+    console.log(userId);
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { avatarImage: fileName, isAvatarImageSet: true },
+      { new: true }
+    ); // to get the updated user document
+
+    console.log(updatedUser);
+
+    res.json({
+      status: true,
+      user: updatedUser,
+      msg: "Image uploaded successfully",
+    });
+  } catch (error) {
+    res.json({ msg: "Server error", status: false });
     next(error);
   }
 };

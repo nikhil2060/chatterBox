@@ -8,6 +8,7 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json()); //middleware parses the JSON data
 
+// app.use(express.urlencoded({ extended: false }));
 app.use("/api/auth", userRoutes);
 
 mongoose

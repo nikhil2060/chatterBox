@@ -44,11 +44,12 @@ function Login() {
 
         const data = await response.json();
 
-        console.log(data);
+        // console.log(data);
 
         if (data && data.status === true) {
           localStorage.setItem("chat-app-user", JSON.stringify(data.user));
           toast("Login succesfull");
+          navigate("/");
         } else {
           toast.error(data.msg);
         }
@@ -83,7 +84,7 @@ function Login() {
   }
 
   return (
-    <div className="w-full h-screen flex items-center justify-center text-zinc-800 font-['Rubik'] bg-[url('./src/assets/9240809.jpg')] bg-contain bg-no-repeat bg-center">
+    <div className="w-full h-screen flex items-center justify-center text-zinc-800  bg-[url('./src/assets/9240809.jpg')] bg-contain bg-no-repeat bg-center">
       <div className="w-[22rem] h-[21rem] flex flex-col items-center rounded-xl border-[1.5px] border-zinc-500 bg-zinc-50 shadow-[rgba(13,_38,_76,_0.5)_0px_9px_20px] ">
         <h1 className="py-5 mt-[3px] text-xl font-medium text-zinc-800">
           Login

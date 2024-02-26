@@ -7,10 +7,12 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import SetAvatar from "./comp/SetAvatar";
 import PhotoPicker from "./pages/PhotoPicker";
+import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
     <BrowserRouter>
+      <GlobalStyles />
       <Routes>
         <Route index element={<LandingPage />}></Route>
         <Route path="signup" element={<Register />}></Route>

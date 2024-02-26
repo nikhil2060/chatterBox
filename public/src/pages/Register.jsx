@@ -50,7 +50,7 @@ function Register() {
           localStorage.setItem("chat-app-user", JSON.stringify(data.user));
         }
 
-        navigate("/login");
+        navigate("/setavatar");
       } catch (error) {
         console.error(error);
       }
