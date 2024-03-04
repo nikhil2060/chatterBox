@@ -18,11 +18,11 @@ function Register() {
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
 
-  useEffect(() => {
-    if (localStorage.getItem("chat-app-user")) {
-      navigate("/");
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   if (localStorage.getItem("chat-app-user")) {
+  //     navigate("/");
+  //   }
+  // }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,8 +94,8 @@ function Register() {
   }
 
   return (
-    <div className="w-full h-screen flex items-center justify-center text-zinc-800 font-['Rubik'] bg-[url('./src/assets/9240809.jpg')] bg-contain bg-no-repeat bg-center">
-      <div className="w-[22rem] h-[30rem] flex flex-col items-center rounded-xl border-[1.5px] border-zinc-500 bg-zinc-50 shadow-[rgba(13,_38,_76,_0.5)_0px_9px_20px] ">
+    <div className="w-full h-screen flex items-center justify-center text-zinc-800 bg-contain bg-no-repeat bg-center bg-gradient-to-r from-rose-50 to-teal-50">
+      <div className="w-[22rem] h-[30rem] flex flex-col items-center rounded-xl bg-zinc-50 shadow-[rgba(13,_38,_76,_0.5)_0px_9px_20px] ">
         <h1 className="py-5 mt-[3px] text-xl font-medium text-zinc-800">
           Signup
         </h1>

@@ -108,7 +108,7 @@ input:focus,
 button:focus,
 textarea:focus,
 select:focus {
-  outline: 2px solid var(--color-brand-600);
+  outline: 2px solid #0171D3;
   outline-offset: -1px;
 }
 
@@ -142,6 +142,28 @@ img {
 
   /* For dark mode */
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4f4f4f; /* Adjust the color as needed */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Adjust the color as needed */
+}
+
+/* For Firefox */
+/* Note: Firefox supports scrollbar styling using a separate pseudo-element */
+/* You may need to use a more specific selector based on your HTML structure */
+html {
+  /* scrollbar-color: #4f4f4f #f1f1f1; */
+  scrollbar-color: #e6f1fb #f1f1f1;
+  scrollbar-width: thin;
 }
 `;
 

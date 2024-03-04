@@ -1,4 +1,8 @@
-const { register, uploadpic } = require("../contrillers/userControllers");
+const {
+  register,
+  uploadpic,
+  getAllUsers,
+} = require("../contrillers/userControllers");
 const { login } = require("../contrillers/userControllers");
 const multer = require("multer");
 
@@ -22,5 +26,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post("/uploadpic", upload.single("image"), uploadpic);
+
+router.get("/allusers/:id", getAllUsers);
 
 module.exports = router;

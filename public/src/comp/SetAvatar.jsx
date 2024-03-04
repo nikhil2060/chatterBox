@@ -6,6 +6,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { uploadPic } from "../utils/ApiRoutes";
 import { toast } from "react-toastify";
+import { Smiley, Heart, Horse, CameraPlus } from "@phosphor-icons/react";
 
 function SetAvatar() {
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
@@ -31,8 +32,8 @@ function SetAvatar() {
   };
 
   return (
-    <div className="w-full h-screen flex items-center justify-center text-zinc-800 font-['Rubik'] bg-[url('./src/assets/9240809.jpg')] bg-contain bg-no-repeat bg-center">
-      <div className="w-[30rem] h-[25rem] flex flex-col items-center rounded-xl border-[1.5px] border-zinc-500 bg-zinc-50 shadow-[rgba(13,_38,_76,_0.5)_0px_9px_20px] overflow-hidden relative">
+    <div className="w-full h-screen flex items-center justify-center text-zinc-800  bg-contain bg-no-repeat bg-center bg-gradient-to-r from-rose-50 to-teal-50">
+      <div className="w-[25rem] h-[15rem] flex flex-col items-center rounded-xl  bg-zinc-50 shadow-[rgba(13,_38,_76,_0.5)_0px_9px_20px] overflow-hidden relative">
         {/* <Avatar
           selectedAvatar={selectedAvatar}
           setSelectedAvatar={setSelectedAvatar}
@@ -84,7 +85,7 @@ function Avatar({ selectedAvatar, setSelectedAvatar }) {
   return (
     <Container
       className="w-full h-1/2 border-b-[1px] border-zinc-500 flex
-    flex-col items-center gap-2"
+    flex-col items-center gap-2 "
     >
       <div className="title-container mt-5">
         <h1 className="text-xl font-medium">Pick Avatar</h1>
@@ -165,7 +166,7 @@ function Photopicker({ selectedAvatar, setSelectedAvatar }) {
       if (data.status === true) {
         toast(data.msg);
         // localStorage.setItem("chat-app-user", JSON.stringify(data.user));
-        // navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       toast.error(error);
@@ -174,16 +175,38 @@ function Photopicker({ selectedAvatar, setSelectedAvatar }) {
 
   return (
     <div
-      className="w-full h-1/2 flex
-  flex-col items-center gap-5"
+      className="w-full h-full flex
+  flex-col items-center gap-5 justify-center"
     >
-      <div className="title-container mt-5">
-        <h1 className="text-xl font-medium">Choose Photo</h1>
+      <div className="title-container">
+        <h1 className="text-xl font-medium">Choose your profile picture</h1>
       </div>
 
-      <form className="ml-[9rem] flex flex-col gap-2" onSubmit={submitImage}>
-        <input type="file" accept="images/*" onChange={onInputChange} />
-        <Button className="w-1/2 mb-2" type="submit">
+      <form
+        className="flex flex-col gap-5 justify-center items-center"
+        onSubmit={submitImage}
+      >
+        <label
+          htmlFor="imageInput"
+          className="rounded-full w-20 h-20 relative
+          bg-gradient-to-r from-indigo-500 to-blue-500
+          backdrop-blur-3xl
+          cursor-pointer shadow-[0_3px_10px_rgb(0,0,0,0.2)]
+          "
+        >
+          <input
+            type="file"
+            id="imageInput"
+            accept="images/*"
+            onChange={onInputChange}
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          />
+          <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+            <CameraPlus size={32} />
+          </span>
+        </label>
+
+        <Button className="rounded-[10px] p-2 text-zinc-50" type="submit">
           Submit
         </Button>
       </form>
@@ -231,16 +254,7 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
+  width: 100%;
   background-color: #0171d3;
-  color: white;
-  padding: 0.2rem 2rem;
-  border: 0.2px solid #333;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 0.4rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-  &:hover {
-    background-color: #0171d3;
-  }
+  box-shadow: 0px 10px 20px 1px #33333335;
 `;

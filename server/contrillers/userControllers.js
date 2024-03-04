@@ -69,12 +69,31 @@ module.exports.uploadpic = async (req, res, next) => {
       { new: true }
     ); // to get the updated user document
 
-    console.log(updatedUser);
-
-    res.json({
+    return res.json({
       status: true,
       user: updatedUser,
       msg: "Image uploaded successfully",
+    });
+  } catch (error) {
+    res.json({ msg: "Server error", status: false });
+    next(error);
+  }
+};
+
+module.exports.getAllUsers = async (req, res, next) => {
+  // console.log("hello");
+  try {
+    const users = await User.find({ _id: { $ne: req.params.id } }).select([
+      "email",
+      "username",
+      "avatarImage",
+      "id",
+    ]);
+
+    return res.json({
+      users,
+      status: true,
+      // msg: "Image uploaded successfully",
     });
   } catch (error) {
     res.json({ msg: "Server error", status: false });

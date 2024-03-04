@@ -8,17 +8,21 @@ import Login from "./pages/Login";
 import SetAvatar from "./comp/SetAvatar";
 import PhotoPicker from "./pages/PhotoPicker";
 import GlobalStyles from "./styles/GlobalStyles";
+import Home from "./pages/Home";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
       <Routes>
-        <Route index element={<LandingPage />}></Route>
+        {/* <Route index element={<LandingPage />}></Route> */}
+        <Route path="chat/:userId" element={<Chat />}></Route>
         <Route path="signup" element={<Register />}></Route>
+        <Route path="/" element={<Login />}></Route>
         <Route path="login" element={<Login />}></Route>
         <Route path="setavatar" element={<SetAvatar />}></Route>
-        <Route path="photopicker" element={<PhotoPicker />}></Route>
+        {/* <Route path="photopicker" element={<PhotoPicker />}></Route> */}
       </Routes>
     </BrowserRouter>
   );
