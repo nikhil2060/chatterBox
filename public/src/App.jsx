@@ -10,21 +10,24 @@ import PhotoPicker from "./pages/PhotoPicker";
 import GlobalStyles from "./styles/GlobalStyles";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
+import { UsersProvider } from "./contexts/UsersContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyles />
-      <Routes>
-        {/* <Route index element={<LandingPage />}></Route> */}
-        <Route path="chat/:userId" element={<Chat />}></Route>
-        <Route path="signup" element={<Register />}></Route>
-        <Route path="/" element={<Login />}></Route>
-        <Route path="login" element={<Login />}></Route>
-        <Route path="setavatar" element={<SetAvatar />}></Route>
-        {/* <Route path="photopicker" element={<PhotoPicker />}></Route> */}
-      </Routes>
-    </BrowserRouter>
+    <UsersProvider>
+      <BrowserRouter>
+        <GlobalStyles />
+        <Routes>
+          {/* <Route index element={<LandingPage />}></Route> */}
+          <Route path="chat/:userId" element={<Chat />}></Route>
+          <Route path="signup" element={<Register />}></Route>
+          <Route path="/" element={<Login />}></Route>
+          <Route path="login" element={<Login />}></Route>
+          <Route path="setavatar/:userId" element={<SetAvatar />}></Route>
+          {/* <Route path="photopicker" element={<PhotoPicker />}></Route> */}
+        </Routes>
+      </BrowserRouter>
+    </UsersProvider>
   );
 }
 

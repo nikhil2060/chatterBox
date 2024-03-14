@@ -1,6 +1,6 @@
 /* eslint react/prop-types: 0 */
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Buffer } from "buffer";
 import axios from "axios";
 import styled from "styled-components";
@@ -117,8 +117,10 @@ function Photopicker({ selectedAvatar, setSelectedAvatar }) {
 
   const [image, setImage] = useState();
 
-  const storedUserData = localStorage.getItem("chat-app-user");
-  const userData = JSON.parse(storedUserData);
+  // const storedUserData = localStorage.getItem("chat-app-user");
+  // const userData = JSON.parse(storedUserData);
+
+  const { userId } = useParams();
 
   // useEffect(() => {
   //   if (storedUserData.isAvatarImageSet === true) {
@@ -139,8 +141,6 @@ function Photopicker({ selectedAvatar, setSelectedAvatar }) {
       const formData = new FormData();
 
       formData.append("image", image);
-
-      const userId = userData._id;
 
       formData.append("userId", userId);
 
